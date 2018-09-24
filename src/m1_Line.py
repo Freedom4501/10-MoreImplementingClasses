@@ -129,6 +129,7 @@ class Point(object):
 
     def clone(self):
         """  Returns a new Point at the same (x, y) as this Point. """
+
         return Point(self.x, self.y)
 
     def distance_from(self, p2):
@@ -218,6 +219,9 @@ class Line(object):
         """
         self.start = start.clone()
         self.end = end.clone()
+        self.count = 0
+
+
 
         # --------------------------------------------------------------
         # Done: 3.
@@ -328,8 +332,8 @@ class Line(object):
         Type hints:
           :rtype: Line
         """
-
-
+        self.count = self.count + 1
+        return Line(self.start,self.end)
         # --------------------------------------------------------------
         # Done : 4.
         #   a. READ the above specification, including the Example.
@@ -363,6 +367,11 @@ class Line(object):
             line1.reverse()
             print(line1 == line2)    # Should now print: True
         """
+        original = self.start
+        self.start = self.end
+        self.end = original
+        return Line(self.start,self.end)
+
         # --------------------------------------------------------------
         # TODO: 5.
         #   a. READ the above specification, including the Example.
@@ -399,8 +408,14 @@ class Line(object):
         Type hints:
           :rtype: float
         """
+        delta_x = self.end.x - self.start.x
+        delta_y = self.end.y - self.start.y
+        if delta_x == 0:
+            return math.inf
+        return delta_y / delta_x
+
         # --------------------------------------------------------------
-        # TODO: 6.
+        # Done: 6.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -431,9 +446,14 @@ class Line(object):
 
         Type hints:
           :rtype: float
+
         """
+        delta_x = self.end.x - self.start.x
+        delta_y = self.end.y - self.start.y
+        length = math.sqrt(delta_x **2 + delta_y ** 2)
+        return length
         # --------------------------------------------------------------
-        # TODO: 7.
+        # Done: 7.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -472,6 +492,8 @@ class Line(object):
         Type hints:
           :rtype: int:
         """
+
+        return self.count
         # --------------------------------------------------------------
         # TODO: 8.
         #   a. READ the above specification, including the Example.
@@ -505,7 +527,18 @@ class Line(object):
         Type hints:
           :type  other_line: Line
           :rtype: Line:
+
         """
+        
+        other_line.start.x = sum(self.start.x + other_line.start.x)
+        other_line.start.y = sum(self.start.y + other_line.start.y)
+        start = Point(other_line.start.x, other_line.start.y)
+        other_line.end.x = sum(self.end.x + other_line.end.x)
+        other_line.end.y = sum(self.end.y + other_line.end.y)
+        end = Point(other_line.end.x, other_line.end.y)
+        other_line = Line(start,end)
+        return other_line
+
         # --------------------------------------------------------------
         # TODO: 9.
         #   a. READ the above specification, including the Example.
