@@ -529,7 +529,7 @@ class Line(object):
           :rtype: Line:
 
         """
-        
+
         other_line.start.x = sum(self.start.x + other_line.start.x)
         other_line.start.y = sum(self.start.y + other_line.start.y)
         start = Point(other_line.start.x, other_line.start.y)
