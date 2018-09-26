@@ -645,12 +645,20 @@ class Line(object):
           :type  line2: Line
           :rtype: bool
         """
+        if round(line2.end.x,12) == round(line2.start.x,12) or round(self.end.x,12) == round(self.start.x,12):
+            if round(line2.end.x,12)==round(line2.start.x,12) and round(self.end.x,12) == round(self.start.x,12):
+                return True
+            return False
+        else:
+            slope1 = (self.end.y-self.start.y)/(self.end.x-self.start.x)
+            slope2 = (line2.end.y - line2.start.y)/(line2.end.x-line2.start.x)
+            if round(slope1,12) == round(slope2,12):
+                return True
+            return False
 
-        slope1 = (self.end.y-self.start.y)/(self.end.x-self.start.x)
-        slope2 = (line2.end.y - line2.start.y)/(line2.end.x-line2.start.x)
-        if slope1 == slope2:
-            return True
-        return False
+
+
+
 
         # --------------------------------------------------------------
         # TODO: 12.
