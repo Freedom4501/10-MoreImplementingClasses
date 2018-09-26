@@ -220,6 +220,10 @@ class Line(object):
         self.start = start.clone()
         self.end = end.clone()
         self.count = 0
+        self.x = self.start.x
+        self.y = self.start.y
+        self.x1 = self.end.x
+        self.y1 = self.end.y
 
 
 
@@ -734,6 +738,10 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # --------------------------------------------------------------
+        self.start = Point(self.x,self.y)
+        self.end = Point(self.x1,self.y1)
+
+
 
 
 ########################################################################
