@@ -495,7 +495,7 @@ class Line(object):
 
         return self.count
         # --------------------------------------------------------------
-        # TODO: 8.
+        # Done: 8.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -530,17 +530,16 @@ class Line(object):
 
         """
 
-        other_line.start.x = sum(self.start.x + other_line.start.x)
-        other_line.start.y = sum(self.start.y + other_line.start.y)
-        start = Point(other_line.start.x, other_line.start.y)
-        other_line.end.x = sum(self.end.x + other_line.end.x)
-        other_line.end.y = sum(self.end.y + other_line.end.y)
-        end = Point(other_line.end.x, other_line.end.y)
-        other_line = Line(start,end)
-        return other_line
+        line3_start_x = other_line.start.x + self.start.x
+        line3_start_y = other_line.start.y + self.start.y
+        line3_end_x = other_line.end.x + self.end.x
+        line3_end_y = other_line.end.y + self.end.y
+        line3 = Line(Point(line3_start_x,line3_start_y),Point(line3_end_x,line3_end_y))
+
+        return line3
 
         # --------------------------------------------------------------
-        # TODO: 9.
+        # Done: 9.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -573,6 +572,12 @@ class Line(object):
           :type  other_line: Line
           :rtype: Line:
         """
+        line3_start_x = self.start.x - other_line.start.x
+        line3_start_y = self.start.y - other_line.start.y
+        line3_end_x = self.end.x - other_line.end.x
+        line3_end_y = self.end.y - other_line.end.y
+        line3 = Line(Point(line3_start_x, line3_start_y), Point(line3_end_x, line3_end_y))
+        return line3
         # --------------------------------------------------------------
         # TODO: 10.
         #   a. READ the above specification, including the Example.
@@ -600,6 +605,10 @@ class Line(object):
         Type hints:
           :rtype: Point
         """
+        line3_midpoint_x = (self.start.x+self.end.x)/2
+        line3_midpoint_y = (self.start.y+self.end.y)/2
+        midpoint = Point(line3_midpoint_x,line3_midpoint_y)
+        return midpoint
         # --------------------------------------------------------------
         # TODO: 11.
         #   a. READ the above specification, including the Example.
@@ -636,6 +645,13 @@ class Line(object):
           :type  line2: Line
           :rtype: bool
         """
+
+        slope1 = (self.end.y-self.start.y)/(self.end.x-self.start.x)
+        slope2 = (line2.end.y - line2.start.y)/(line2.end.x-line2.start.x)
+        if slope1 == slope2:
+            return True
+        return False
+
         # --------------------------------------------------------------
         # TODO: 12.
         #   a. READ the above specification, including the Example.
