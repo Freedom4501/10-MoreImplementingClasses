@@ -30,6 +30,7 @@ def main():
     """
     mckinley = Baby('McKinley')
     keegan = Baby('Keegan')
+
     for k in range(2):
         print('- - - - -')
         keegan.hour_passes()
@@ -38,8 +39,9 @@ def main():
             mckinley.hour_passes()
 
 
+
 # ----------------------------------------------------------------------
-# TODO: 2. Implement a class called   Baby   that has a constructor and
+# Done: 2. Implement a class called   Baby   that has a constructor and
 #   two methods, as described below.  Your finished Baby class should
 #   cause the code above to display the expected output.  Hint: Your
 #   class will need instance variables that you must figure out.
@@ -65,8 +67,8 @@ def main():
 #     What comes in:
 #        -- self
 #     What goes out:  Nothing (i.e., None).
-#     Side effects:
-#      -- If it is the first time this function has been called
+# #     Side effects:
+# #      -- If it is the first time this function has been called
 #           since Baby was created or fed:
 # 	          -- Prints 'Baby <your baby's name> is sleeping.'
 #      -- If it is the second time this function has been called
@@ -93,7 +95,23 @@ def main():
 #          """ Brief description of what objects of the class 'are'. """
 #
 ########################################################################
-
+class Baby(object):
+    'print out those words'
+    def __init__(self, name):
+        self.called = 0
+        self.name = name
+        print('hello baby ' + self.name)
+    def feed_baby(self):
+        print('Thank you for feeding baby ' + self.name)
+        self.called = 0
+    def hour_passes(self):
+        self.called += 1
+        if self.called == 1:
+            print('Baby '+ self.name + ' is sleeping.')
+        elif self.called == 2:
+            print('Baby' + self.name + ' is awake. Time for food.')
+        else:
+            print('Baby' + self.name + ' is CRYING uncontrollably! Feed the Baby!')
 
 # ----------------------------------------------------------------------
 # If this module is running at the top level (as opposed to being
