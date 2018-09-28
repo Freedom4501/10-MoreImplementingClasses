@@ -151,7 +151,7 @@ class CapitalT(object):
         #   Implement this method
         #   Note: you will need to also implement attach_to before testing
         # --------------------------------------------------------------
-
+        self.color = 'black'
         self.center = intersection_center
         self.w = width
         self.h = height
@@ -281,7 +281,11 @@ class CapitalT(object):
         #     run_test method in main. Compare the graphics window to
         #     clone.pdf.
         # --------------------------------------------------------------
-        return CapitalT(self.center,self.w,self.h,self.t)
+
+        newcapitalt = CapitalT(self.center,self.w,self.h,self.t)
+        newcapitalt.set_colors(self.v_rect.fill_color,self.v_rect.outline_color)
+
+        return newcapitalt
 
 
 # ----------------------------------------------------------------------
